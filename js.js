@@ -55,10 +55,33 @@ class Keo extends React.Component {
                 if (homeKeo > 0) {homeKeo = `+` + homeKeo.toString() }
                 if (awayKeo > 0) {awayKeo = `+` + awayKeo.toString() }
                 return (
-                    <div className="keo">
-                        <div className="lai" value={home+' '+homeKeo} value2={ x[1]} co={x[1]} onClick={this.chonKeo}>{x[1]}</div>
-                        <div className="keochinh">{x[0]}</div>
-                        <div className="lai"value={away+' '+awayKeo} value2={ x[2]}co={x[2]}onClick={this.chonKeo}>{x[2]}</div>
+                    <div className="keo" style={{width:" 100%",
+                        height:" 35px",
+                        display: "flex",
+                        fontSize: "22px",
+                        margin: "10px 0",
+                        justifyContent: "space-evenly"}}>
+                        <div className="lai" value={home+' '+homeKeo} value2={ x[1]} co={x[1]} onClick={this.chonKeo}
+                            style={{ width: "80px",
+                                border: "solid 2px rgb(148, 143, 143)",
+                                borderRadius: "4px",
+                                paddingTop: "3px",
+                                fontSize: "20px"}}
+                        >{x[1]}</div>
+                        <div className="keochinh" 
+                        style={{  width:" 20%",
+                                border: "solid 2px rgb(230, 225, 225)",
+                                paddingTop: "2px",
+                                fontWeight: "bolder",
+                                color: "rgb(179, 71, 8)"}}>
+                        {x[0]}</div>
+                        <div className="lai"value={away+' '+awayKeo} value2={ x[2]}co={x[2]}onClick={this.chonKeo}
+                            style={{ width: "80px",
+                            border: "solid 2px rgb(148, 143, 143)",
+                            borderRadius: "4px",
+                            paddingTop: "3px",
+                            fontSize: "20px"}}
+                        >{x[2]}</div>
                     </div>
                 )
             })
@@ -68,10 +91,33 @@ class Keo extends React.Component {
                 let keoTai = Number(x[0])
                 let keoXiu = Number(x[0])
                 return (
-                    <div className="keo">
-                        <div className="lai" value={"Tài"+' '+keoTai} value2={x[1]}co={x[1]} onClick={this.chonKeo}>{x[1]}</div>
-                        <div className="keochinh">{x[0]}</div>
-                        <div className="lai"value={"Xỉu"+' '+keoXiu} value2={x[2]}co={x[2]} onClick={this.chonKeo}>{x[2]}</div>
+                    <div className="keo" style={{width:" 100%",
+                    height:" 35px",
+                    display: "flex",
+                    fontSize: "22px",
+                    margin: "10px 0",
+                    justifyContent: "space-evenly"}}>
+                        <div className="lai" value={"Tài"+' '+keoTai} value2={x[1]}co={x[1]} onClick={this.chonKeo}
+                            style={{ width: "80px",
+                            border: "solid 2px rgb(148, 143, 143)",
+                            borderRadius: "4px",
+                            paddingTop: "3px",
+                            fontSize: "20px"}}
+                        >{x[1]}</div>
+                        <div className="keochinh" 
+                             style={{  width:" 20%",
+                             border: "solid 2px rgb(230, 225, 225)",
+                             paddingTop: "2px",
+                             fontWeight: "bolder",
+                             color: "rgb(179, 71, 8)"}}
+                        >{x[0]}</div>
+                        <div className="lai"value={"Xỉu"+' '+keoXiu} value2={x[2]}co={x[2]} onClick={this.chonKeo}
+                            style={{ width: "80px",
+                            border: "solid 2px rgb(148, 143, 143)",
+                            borderRadius: "4px",
+                            paddingTop: "3px",
+                            fontSize: "20px"}}
+                        >{x[2]}</div>
                     </div>
                 )
             })
@@ -83,10 +129,26 @@ class Keo extends React.Component {
         
         const CapDau = () => {
             return (
-                <div className="battle">
-                    <div className="team team1">{this.props.keo.home}</div>
-                    <div className="soi-keo" onClick={this.changeHiep}>Cả trận</div>
-                    <div className="team team2">{this.props.keo.away}</div>
+                <div className="battle" style={{
+                        display: "flex",
+                        height: "50px",
+                        backgroundColor: "black",
+                        color: "white",
+                        justifyContent: "space-between",
+                        marginBottom: "20px",
+                }}>
+                    <div className="team team1" style={{  paddingTop: "9px",width: "42%",fontSize: "22px"}}>{this.props.keo.home}</div>
+                    <div className="soi-keo" onClick={this.changeHiep} 
+                    style={{width:" 20%",
+                        borderBottom: "black",
+                        paddingTop: "16px",
+                        fontSize: "16px",
+                        color: "black",
+                        backgroundColor: "rgb(230, 225, 225)",
+                        borderTopLeftRadius: "15px",
+                        borderTopRightRadius: "15px",}}>
+                        Cả trận</div>
+                    <div className="team team2" style={{  paddingTop: "9px",width: "42%",fontSize: "22px"}}>{this.props.keo.away}</div>
                 </div>
             )
         }
@@ -94,12 +156,20 @@ class Keo extends React.Component {
             
             return (
             <div>
-                <div className="keo-hiep">{keoChap1}Tài/Xỉu{keoTx1}</div>
-                <div className="keo-hiep">{keoChap} Tài/Xỉu {keoTx}</div>
+                <div className="keo-hiep" style={{position: "absolute",width: "100%",backgroundColor: "rgb(230, 225, 225)"}}>{keoChap1}Tài/Xỉu{keoTx1}</div>
+                <div className="keo-hiep" style={{position: "absolute",width: "100%",backgroundColor: "rgb(230, 225, 225)"}}>{keoChap} Tài/Xỉu {keoTx}</div>
             </div>)
         }
         return (
-            <div className="match">
+            <div className="match" style={{
+                width: "100%",
+                height: "300px",
+                position:" relative",
+                textAlign: "center",
+                border: "solid 1px rgb(172, 161, 161)",
+                backgroundColor: "rgb(230, 225, 225)",
+            
+            }}>
                 <CapDau />
                 <TiLeCuoc  />
             </div>
@@ -117,13 +187,37 @@ class AddBill extends React.Component {
     }
     render() {
         return (
-            <div className="input-tien">
-                <h3 className="tran">• {this.props.keo}</h3>
-                <h3>{this.props.uoctinh}</h3>
-                <div className="nhap-tien">
-                    <input type="text" value={this.state.sotien} onChange={this.nhapSoTien}/>
+            <div className="input-tien" style={{ height: "50px",
+                display: "flex",
+                backgroundColor:" aliceblue",
+                textAlign: "center"}}>
+                <h3 className="tran" style={{
+                        width: "40%",
+                        textAlign: "left",
+                        paddingTop: "16px",
+                        paddingLeft: "8px",
+                        fontSize: "16px",
+                }}>• {this.props.keo}</h3>
+                <h3 style={{
+                      width: "20%",
+                      paddingTop: "5px",
+                      textAlign: "center",
+                      paddingTop: "14px",
+                }}>{this.props.uoctinh}</h3>
+                <div className="nhap-tien" style={{  width: "25%",padding: "9px 0"}}>
+                    <input type="text" value={this.state.sotien} onChange={this.nhapSoTien} className="inputTien"
+                        style={{ width: "80%",
+                                height: "100%",
+                                textAlign: "center",
+                                fontSize: "140%"}}/>
                 </div>
-                <p>{(this.state.sotien*this.props.co).toFixed(0)}</p>
+                <p style={{  width:" 15%",
+                        paddingTop: "17px",
+                        textAlign: "center",
+                        fontWeight: "bolder",
+                        color: "green",
+                        overflow: "hidden"}}
+  >{(this.state.sotien*this.props.co).toFixed(0)}</p>
             </div>
         )
     }
@@ -164,7 +258,11 @@ class App extends React.Component {
     render () {
         return (
             <div>
-            <div className="board">
+            <div className="board" 
+            style={{width:"80%", 
+                    height: "auto",
+                    paddingBottom: "80px",
+                    margin: "10px 10%"}}>
                 <Header />
                 <Keo keo={keo1} add={this.addBet} remove={this.removeBet}/>
                 <Keo keo={keo2} add={this.addBet} remove={this.removeBet}/>

@@ -1,8 +1,34 @@
 export const Header = () => {
     return (
-        <div className="san">
-            <div className="sta home">NHÀ</div>
-            <div className="sta away">KHÁCH</div>
+        <div className="san"
+        style={{  width: "100%",
+            height: "70px",
+            display: "flex"}}>
+            <div className="sta home"
+            style={{ width: "50%",
+                textAlign: "center",
+                fontSize:" 35px",
+                fontWeight: "bolder",
+                paddingTop: "15px",
+                color: "rgb(236, 234, 234)",
+                backgroundColor: "black",
+                borderTopLeftRadius: "20px",
+                borderRight: "solid 1px white"
+            }}
+               
+            >NHÀ</div>
+            <div className="sta away"
+            style={{
+                width: "50%",
+                textAlign: "center",
+                fontSize:" 35px",
+                fontWeight: "bolder",
+                paddingTop: "15px",
+                color: "rgb(236, 234, 234)",
+                backgroundColor: "black",
+                borderTopRightRadius: "20px",
+                borderLeft: "solid 1px white"
+            }}>KHÁCH</div>
         </div>
     )
 }
@@ -14,26 +40,43 @@ function openChuThich() {
 }
 const BtnVeCuoc = (props) => {
     return (
-        <div className="vecuoc" onClick={props.func}>
-            <p>Vé Cược</p>
+        <div className="vecuoc" onClick={props.func} style={{
+            width: "20%",
+            height: "100%",
+            margin:" 0 40%",
+            backgroundColor: "orange",
+            paddingTop: "8px",
+            textAlign: "center",
+        }}>
+            <p style={{ width: "100%"}}>Vé Cược</p>
             <h1 id="tongcuoc">0</h1> 
         </div>
     )
 }
 const cuoc = () => {
-    html2canvas(document.querySelector("#themvecuoc")).then(canvas => {
-        canvas.toBlob(function(blob){
-            saveAs(blob, "vecuoc.png")
-        })
-    });
-    location.reload();
+    if(document.getElementsByClassName(`inputTien`)){
+        let a = document.getElementsByClassName(`inputTien`);
+        let b=0;
+        for(let i=0;i<a.length;i++) {
+            if(a[i].getAttribute(`value`) == "") {b+=1}
+        }
+        if(b>0){alert(`Nhập đủ số tiền cược`)}
+        else{
+        html2canvas(document.querySelector("#themvecuoc")).then(canvas => {
+            canvas.toBlob(function(blob){
+                saveAs(blob, "vecuoc.png")
+            })
+        });}
+    }
+    
+    
 }
 const Buttons = () => {
     return (
         <div>
-            <div className="btn chu-thich" onClick={openChuThich}> &#9888; Chú thích!</div>
+            <div className="btn chu-thich" onClick={openChuThich} > &#9888; Chú thích!</div>
             <div className="btn btnSub"onClick={cuoc}><div id="button">Cược</div></div>
-            <div className="btn btnDel"><div>Bỏ</div></div>
+            <div className="btn btnDel"  onClick={()=> {location.reload();}}><div>Bỏ</div></div>
         </div>
     )
 }   
@@ -64,7 +107,12 @@ export class VeCuoc  extends React.Component {
     }
     render() {
         return (
-        <div className="bottom">
+        <div className="bottom" style={{position: "fixed",
+            bottom: "0",
+            width: "100%",
+            height: "70px",
+            backgroundColor: "black",
+            transition: "1s"}}>
             
             <BtnVeCuoc  func={this.showVe}/>
             <div className="themvecuoc" id="themvecuoc"></div>
